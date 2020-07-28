@@ -17,8 +17,20 @@ The following methods are available from module `wai.lazypip`:
   been provided, installs these and performs check again.
 * `require_module` - like `check_module`, but instead of returning a boolean, will
   raise an Exception in case the module is not present.
+* `check_fun` and `require_fun` work in a similar fashion, but checking for a function
+  within the module.
 
-The packages list
+The list of packages to install is in the same format as you would normally pass
+on to the `pip` command-line too, e.g.:
+
+```
+["matplotlib"]
+["matploblib<3.3.0"]
+```
+
+It is also possible to provide additional arguments to pip (which get inserted after
+the `install` argument).
+
 
 ## Examples
 
