@@ -19,6 +19,8 @@ The following methods are available from module `wai.lazypip`:
   raise an Exception in case the module is not present.
 * `check_fun` and `require_fun` work in a similar fashion, but checking for a function
   within the module.
+* `check_attr` and `require_attr` check for an attribute within the module.
+* `check_class` and `require_class` check for a class to be present within the module.
 
 The list of packages to install is in the same format as you would normally pass
 on to the `pip` command-line too, e.g.:
