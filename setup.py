@@ -1,6 +1,3 @@
-# setup.py
-# Copyright (C) 2019 Fracpete (fracpete at waikato dot ac dot nz)
-
 from setuptools import setup, find_namespace_packages
 
 def _read(f) -> bytes:
