@@ -1,2 +1,3 @@
 # wai-lazypip
-Allows installation of additional packages at runtime (when inside a virtual environment).
+
+Allows installation of additional packages at runtime (from within virtual environments).
