@@ -6,7 +6,11 @@ Uses `pip` underneath the hood for installing the packages.
 
 ## Installation
 
-TODO
+You can install the library with pip as follows:
+
+```
+pip install wai.lazypip
+```
 
 
 ## Functionality
@@ -64,5 +68,28 @@ the `install` argument).
   m = "matplotlib"
   f = "validate_backend"
   p = [m + "<3.3.0"]
-  print(m, check_fun(m, f, p))
+  print(m, f, check_fun(m, f, p))
   ```
+  
+* checking whether the `matplotlib` module has attribute `URL_REGEX` and installing 
+  matplotlib older than 3.3.0 if not yet present in the virtual environment 
+
+  ```python
+  from wai.lazypip import check_attr
+  m = "matplotlib"
+  a = "URL_REGEX"
+  p = [m + "<3.3.0"]
+  print(m, a, check_attr(m, a, p))
+  ```
+  
+* checking whether the `matplotlib` module has method `validate_backend` and installing 
+  matplotlib older than 3.3.0 if not yet present in the virtual environment 
+
+  ```python
+  from wai.lazypip import check_class
+  m = "matplotlib"
+  c = "MutableMapping"
+  p = [m + "<3.3.0"]
+  print(m, c, check_class(m, c, p))
+  ```
+  
