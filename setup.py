@@ -17,7 +17,7 @@ setup(
     long_description=(
         _read('DESCRIPTION.rst') + b'\n' +
         _read('CHANGES.rst')).decode('utf-8'),
-    url="https://github.com/wai-lazypip",
+    url="https://github.com/waikato-ufdl/wai-lazypip",
     classifiers=[
         'Development Status :: 4 - Beta',
         'License :: OSI Approved :: Apache Software License',
