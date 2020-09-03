@@ -1,8 +1,36 @@
 from importlib import import_module
 from inspect import getmembers, isclass
+import logging
 import pip
 import traceback
 from ._venv import is_venv
+
+
+def backup_root_logger():
+    """
+    Creates a backup of the root logger.
+
+    :return: the backup
+    :rtype: dict
+    """
+    result = dict()
+    result['level'] = logging.root.level
+    result['disabled'] = logging.root.disabled
+    result['handlers'] = logging.root.handlers[:]
+    return result
+
+
+def restore_root_logger(backup):
+    """
+    Restores the root logger from the backup.
+
+    :param backup: the backup (level/disable/handlers)
+    :type backup: dict
+    """
+
+    logging.root.level = backup['level']
+    logging.root.disabled = backup['disabled']
+    logging.root.handlers = backup['handlers']
 
 
 def install_packages(packages, pip_args=None):
@@ -15,6 +43,9 @@ def install_packages(packages, pip_args=None):
     :type pip_args: list
     """
 
+    # calling pip.main changes the root logger setup
+    backup = backup_root_logger()
+
     print("installing", packages)
     try:
         args = ["install"]
@@ -25,6 +56,9 @@ def install_packages(packages, pip_args=None):
     except:
         print("Failed to install: %s" % ",".join(packages))
         print(traceback.format_exc())
+
+    # restore original settings of root logger
+    restore_root_logger(backup)
 
 
 def check_module(module_name, packages=None, pip_args=None):
